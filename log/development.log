@@ -757,3 +757,534 @@ Processing by ArtistsController#show as HTML
   [1m[35mSong Load (0.2ms)[0m  SELECT "songs".* FROM "songs" WHERE "songs"."artist_id" = ?  [["artist_id", 1]]
   Rendered artists/show.html.erb within layouts/application (9.7ms)
 Completed 200 OK in 17ms (Views: 15.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/songs" for 127.0.0.1 at 2017-10-23 21:21:20 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (10.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by SongsController#index as HTML
+  [1m[35mSong Load (14.7ms)[0m  SELECT "songs".* FROM "songs"
+  [1m[36mArtist Load (14.2ms)[0m  [1mSELECT  "artists".* FROM "artists" WHERE "artists"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "artists".* FROM "artists" WHERE "artists"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mArtist Load (15.7ms)[0m  [1mSELECT  "artists".* FROM "artists" WHERE "artists"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mArtist Load (8.4ms)[0m  SELECT  "artists".* FROM "artists" WHERE "artists"."id" = ? LIMIT 1  [["id", 3]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "artists".* FROM "artists" WHERE "artists"."id" = ? LIMIT 1[0m  [["id", 3]]
+  [1m[35mArtist Load (16.5ms)[0m  SELECT  "artists".* FROM "artists" WHERE "artists"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "artists".* FROM "artists" WHERE "artists"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "artists".* FROM "artists" WHERE "artists"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "artists".* FROM "artists" WHERE "artists"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered songs/index.html.erb within layouts/application (474.0ms)
+Completed 200 OK in 1850ms (Views: 1571.1ms | ActiveRecord: 135.7ms)
+
+
+Started GET "/artists/1" for 127.0.0.1 at 2017-10-23 21:42:24 -0500
+Processing by ArtistsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mArtist Load (11.0ms)[0m  SELECT  "artists".* FROM "artists" WHERE "artists"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mSong Load (17.4ms)[0m  [1mSELECT "songs".* FROM "songs" WHERE "songs"."artist_id" = ?[0m  [["artist_id", 1]]
+  Rendered artists/show.html.erb within layouts/application (238.8ms)
+Completed 200 OK in 815ms (Views: 581.4ms | ActiveRecord: 92.2ms)
+
+
+Started GET "/artists/1" for 127.0.0.1 at 2017-10-23 21:45:25 -0500
+Processing by ArtistsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mArtist Load (5.9ms)[0m  SELECT  "artists".* FROM "artists" WHERE "artists"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mSong Load (11.9ms)[0m  [1mSELECT "songs".* FROM "songs" WHERE "songs"."artist_id" = ?[0m  [["artist_id", 1]]
+  Rendered artists/show.html.erb within layouts/application (14.3ms)
+Completed 200 OK in 440ms (Views: 420.8ms | ActiveRecord: 17.7ms)
+
+
+Started GET "/artists/1/songs/new" for 127.0.0.1 at 2017-10-23 21:45:29 -0500
+Processing by SongsController#new as HTML
+  Parameters: {"artist_id"=>"1"}
+  [1m[35mArtist Exists (5.3ms)[0m  SELECT  1 AS one FROM "artists" WHERE "artists"."id" = ? LIMIT 1  [["id", 1]]
+Completed 500 Internal Server Error in 102ms (ActiveRecord: 5.3ms)
+
+ArgumentError (wrong number of arguments (given 1, expected 0)):
+  app/controllers/songs_controller.rb:31:in `new'
+
+
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (13.0ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.4ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (34.1ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (20.4ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (81.6ms)
+
+
+Started GET "/artists/1/songs/new" for 127.0.0.1 at 2017-10-23 21:45:56 -0500
+Processing by SongsController#new as HTML
+  Parameters: {"artist_id"=>"1"}
+  [1m[36mArtist Exists (20.6ms)[0m  [1mSELECT  1 AS one FROM "artists" WHERE "artists"."id" = ? LIMIT 1[0m  [["id", 1]]
+Completed 500 Internal Server Error in 203ms (ActiveRecord: 58.0ms)
+
+ArgumentError (wrong number of arguments (given 1, expected 0)):
+  app/controllers/songs_controller.rb:31:in `new'
+
+
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (16.9ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.7ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (43.4ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.6ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (26.2ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.6ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (56.7ms)
+
+
+Started GET "/artists/1/songs/new" for 127.0.0.1 at 2017-10-23 21:47:35 -0500
+Processing by SongsController#new as HTML
+  Parameters: {"artist_id"=>"1"}
+  [1m[35mArtist Exists (21.0ms)[0m  SELECT  1 AS one FROM "artists" WHERE "artists"."id" = ? LIMIT 1  [["id", 1]]
+Completed 500 Internal Server Error in 24ms (ActiveRecord: 21.0ms)
+
+ArgumentError (wrong number of arguments (given 1, expected 0)):
+  app/controllers/songs_controller.rb:31:in `new'
+
+
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (2.3ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.2ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (27.9ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (7.2ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (20.1ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (48.3ms)
+
+
+Started GET "/artists/1/songs/new" for 127.0.0.1 at 2017-10-23 21:48:10 -0500
+Processing by SongsController#new as HTML
+  Parameters: {"artist_id"=>"1"}
+  [1m[36mArtist Exists (14.7ms)[0m  [1mSELECT  1 AS one FROM "artists" WHERE "artists"."id" = ? LIMIT 1[0m  [["id", 1]]
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 14.7ms)
+
+ArgumentError (wrong number of arguments (given 1, expected 0)):
+  app/controllers/songs_controller.rb:31:in `new'
+
+
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (12.6ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.3ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (30.0ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (23.5ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (58.1ms)
+
+
+Started GET "/artists/1/songs/new" for 127.0.0.1 at 2017-10-23 23:59:44 -0500
+Processing by SongsController#new as HTML
+  Parameters: {"artist_id"=>"1"}
+  [1m[35mArtist Exists (14.1ms)[0m  SELECT  1 AS one FROM "artists" WHERE "artists"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mArtist Load (16.8ms)[0m  [1mSELECT  "artists".* FROM "artists" WHERE "artists"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered songs/_form.html.erb (255.1ms)
+  Rendered songs/new.html.erb within layouts/application (363.4ms)
+Completed 200 OK in 1087ms (Views: 803.9ms | ActiveRecord: 103.1ms)
+
+
+Started GET "/artists/1/songs/new" for 127.0.0.1 at 2017-10-24 00:00:38 -0500
+Processing by SongsController#new as HTML
+  Parameters: {"artist_id"=>"1"}
+  [1m[35mArtist Exists (15.3ms)[0m  SELECT  1 AS one FROM "artists" WHERE "artists"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mArtist Load (9.0ms)[0m  [1mSELECT  "artists".* FROM "artists" WHERE "artists"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered songs/_form.html.erb (43.9ms)
+  Rendered songs/new.html.erb within layouts/application (155.9ms)
+Completed 200 OK in 878ms (Views: 570.6ms | ActiveRecord: 100.9ms)
+
+
+Started POST "/songs" for 127.0.0.1 at 2017-10-24 00:01:10 -0500
+Processing by SongsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"eLI4AJ3LDA7L4sh7XLPYQzh5y3FDy8jR/rbbDL+d6NVMDS1RIeuMlqLeIPcisyyws9h267RtdfPWu3zb58clBQ==", "song"=>{"artist_id"=>"1", "title"=>"Test song", "artist_name"=>"The Killers"}, "commit"=>"Create Song"}
+  [1m[35mArtist Load (8.9ms)[0m  SELECT  "artists".* FROM "artists" WHERE "artists"."name" = ? LIMIT 1  [["name", "The Killers"]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (54.7ms)[0m  INSERT INTO "songs" ("title", "artist_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "Test song"], ["artist_id", 1], ["created_at", "2017-10-24 05:01:11.874191"], ["updated_at", "2017-10-24 05:01:11.874191"]]
+  [1m[36m (31.7ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/songs/10
+Completed 302 Found in 437ms (ActiveRecord: 175.6ms)
+
+
+Started GET "/songs/10" for 127.0.0.1 at 2017-10-24 00:01:11 -0500
+Processing by SongsController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[35mSong Load (21.3ms)[0m  SELECT  "songs".* FROM "songs" WHERE "songs"."id" = ? LIMIT 1  [["id", 10]]
+  [1m[36mArtist Load (8.8ms)[0m  [1mSELECT  "artists".* FROM "artists" WHERE "artists"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered songs/show.html.erb within layouts/application (12.9ms)
+Completed 200 OK in 461ms (Views: 427.8ms | ActiveRecord: 30.1ms)
+
+
+Started GET "/artists/1" for 127.0.0.1 at 2017-10-24 00:24:29 -0500
+Processing by ArtistsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mArtist Load (17.7ms)[0m  SELECT  "artists".* FROM "artists" WHERE "artists"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mSong Load (11.9ms)[0m  [1mSELECT "songs".* FROM "songs" WHERE "songs"."artist_id" = ?[0m  [["artist_id", 1]]
+  Rendered artists/show.html.erb within layouts/application (166.9ms)
+Completed 200 OK in 769ms (Views: 568.2ms | ActiveRecord: 95.2ms)
+
+
+Started GET "/artists/1" for 127.0.0.1 at 2017-10-24 00:27:15 -0500
+Processing by ArtistsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mArtist Load (12.4ms)[0m  SELECT  "artists".* FROM "artists" WHERE "artists"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mSong Load (23.9ms)[0m  [1mSELECT "songs".* FROM "songs" WHERE "songs"."artist_id" = ?[0m  [["artist_id", 1]]
+  Rendered artists/show.html.erb within layouts/application (138.1ms)
+Completed 500 Internal Server Error in 537ms (ActiveRecord: 36.3ms)
+
+ActionView::Template::Error (No route matches {:action=>"edit", :artist_id=>#<Song id: 1, title: "Mr. Brightside", created_at: "2016-02-01 08:02:38", updated_at: "2016-02-01 08:02:38", artist_id: 1>, :controller=>"songs", :id=>nil} missing required keys: [:id]):
+     8:   <% @artist.songs.each do |song| %>
+     9:     <li>
+    10:       <%= link_to song.title, artist_song_path(@artist, song) %>(
+    11:         <%= link_to 'Edit', edit_artist_song_path(song) %>
+    12:       )
+    13:     </li>
+    14:   <% end %>
+  app/views/artists/show.html.erb:11:in `block in _app_views_artists_show_html_erb__90203390597098533_69912943613080'
+  app/views/artists/show.html.erb:8:in `_app_views_artists_show_html_erb__90203390597098533_69912943613080'
+
+
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.6ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.4ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (35.3ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (23.7ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (57.1ms)
+
+
+Started GET "/artists/1" for 127.0.0.1 at 2017-10-24 00:33:42 -0500
+Processing by ArtistsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mArtist Load (18.4ms)[0m  SELECT  "artists".* FROM "artists" WHERE "artists"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mSong Load (11.0ms)[0m  [1mSELECT "songs".* FROM "songs" WHERE "songs"."artist_id" = ?[0m  [["artist_id", 1]]
+  Rendered artists/show.html.erb within layouts/application (13.7ms)
+Completed 200 OK in 467ms (Views: 435.3ms | ActiveRecord: 29.4ms)
+
+
+Started GET "/artists/1/songs/1" for 127.0.0.1 at 2017-10-24 00:33:47 -0500
+Processing by SongsController#show as HTML
+  Parameters: {"artist_id"=>"1", "id"=>"1"}
+  [1m[35mArtist Load (9.9ms)[0m  SELECT  "artists".* FROM "artists" WHERE "artists"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mSong Load (7.9ms)[0m  [1mSELECT  "songs".* FROM "songs" WHERE "songs"."artist_id" = ? AND "songs"."id" = ? LIMIT 1[0m  [["artist_id", 1], ["id", 1]]
+  Rendered songs/show.html.erb within layouts/application (102.4ms)
+Completed 500 Internal Server Error in 425ms (ActiveRecord: 17.9ms)
+
+ActionView::Template::Error (No route matches {:action=>"edit", :artist_id=>#<Song id: 1, title: "Mr. Brightside", created_at: "2016-02-01 08:02:38", updated_at: "2016-02-01 08:02:38", artist_id: 1>, :controller=>"songs", :id=>nil} missing required keys: [:id]):
+    2: 
+    3: <h3> by <%= display_artist(@song) %></h3>
+    4: 
+    5: <%= link_to 'Edit Song', edit_artist_song_path(@song) %>
+    6: 
+    7: <%= link_to "All Songs", songs_path %>
+  app/views/songs/show.html.erb:5:in `_app_views_songs_show_html_erb___1053795470425103888_69912775746620'
+
+
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.5ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.5ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (36.7ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.2ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (31.7ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (55.4ms)
+
+
+Started PUT "/artists/1/songs/console/repl_sessions/4a37b9a49faa8c0700bfee2c6bc807b9" for 127.0.0.1 at 2017-10-24 00:34:11 -0500
+
+
+Started PUT "/artists/1/songs/console/repl_sessions/4a37b9a49faa8c0700bfee2c6bc807b9" for 127.0.0.1 at 2017-10-24 00:34:18 -0500
+
+
+Started PUT "/artists/1/songs/console/repl_sessions/4a37b9a49faa8c0700bfee2c6bc807b9" for 127.0.0.1 at 2017-10-24 00:34:19 -0500
+
+
+Started GET "/artists/1/songs/1" for 127.0.0.1 at 2017-10-24 00:35:15 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (9.9ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by SongsController#show as HTML
+  Parameters: {"artist_id"=>"1", "id"=>"1"}
+  [1m[35mArtist Load (19.3ms)[0m  SELECT  "artists".* FROM "artists" WHERE "artists"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mSong Load (10.1ms)[0m  [1mSELECT  "songs".* FROM "songs" WHERE "songs"."artist_id" = ? AND "songs"."id" = ? LIMIT 1[0m  [["artist_id", 1], ["id", 1]]
+  Rendered songs/show.html.erb within layouts/application (188.0ms)
+Completed 500 Internal Server Error in 1566ms (ActiveRecord: 105.1ms)
+
+ActionView::Template::Error (No route matches {:action=>"edit", :artist_id=>#<Song id: 1, title: "Mr. Brightside", created_at: "2016-02-01 08:02:38", updated_at: "2016-02-01 08:02:38", artist_id: 1>, :controller=>"songs", :id=>nil} missing required keys: [:id]):
+    2: 
+    3: <h3> by <%= display_artist(@song) %></h3>
+    4: 
+    5: <%= link_to 'Edit Song', edit_artist_song_path(@song) %>
+    6: 
+    7: <%= link_to "All Songs", songs_path %>
+  app/views/songs/show.html.erb:5:in `_app_views_songs_show_html_erb__4230065141743223510_70101557294220'
+
+
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (12.0ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.5ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (51.0ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (84.4ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.2ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (20.4ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (78.3ms)
+
+
+Started GET "/artists/1/songs/1" for 127.0.0.1 at 2017-10-24 00:35:19 -0500
+Processing by SongsController#show as HTML
+  Parameters: {"artist_id"=>"1", "id"=>"1"}
+  [1m[35mArtist Load (17.8ms)[0m  SELECT  "artists".* FROM "artists" WHERE "artists"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mSong Load (9.9ms)[0m  [1mSELECT  "songs".* FROM "songs" WHERE "songs"."artist_id" = ? AND "songs"."id" = ? LIMIT 1[0m  [["artist_id", 1], ["id", 1]]
+  Rendered songs/show.html.erb within layouts/application (134.1ms)
+Completed 500 Internal Server Error in 535ms (ActiveRecord: 27.6ms)
+
+ActionView::Template::Error (No route matches {:action=>"edit", :artist_id=>#<Song id: 1, title: "Mr. Brightside", created_at: "2016-02-01 08:02:38", updated_at: "2016-02-01 08:02:38", artist_id: 1>, :controller=>"songs", :id=>nil} missing required keys: [:id]):
+    2: 
+    3: <h3> by <%= display_artist(@song) %></h3>
+    4: 
+    5: <%= link_to 'Edit Song', edit_artist_song_path(@song) %>
+    6: 
+    7: <%= link_to "All Songs", songs_path %>
+  app/views/songs/show.html.erb:5:in `_app_views_songs_show_html_erb__4230065141743223510_70101557294220'
+
+
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (8.5ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (41.0ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.2ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (19.7ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (52.2ms)
+
+
+Started GET "/artists/1/songs/1" for 127.0.0.1 at 2017-10-24 00:35:25 -0500
+Processing by SongsController#show as HTML
+  Parameters: {"artist_id"=>"1", "id"=>"1"}
+  [1m[35mArtist Load (5.3ms)[0m  SELECT  "artists".* FROM "artists" WHERE "artists"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mSong Load (15.8ms)[0m  [1mSELECT  "songs".* FROM "songs" WHERE "songs"."artist_id" = ? AND "songs"."id" = ? LIMIT 1[0m  [["artist_id", 1], ["id", 1]]
+  Rendered songs/show.html.erb within layouts/application (103.0ms)
+Completed 500 Internal Server Error in 513ms (ActiveRecord: 21.1ms)
+
+ActionView::Template::Error (No route matches {:action=>"edit", :artist_id=>#<Song id: 1, title: "Mr. Brightside", created_at: "2016-02-01 08:02:38", updated_at: "2016-02-01 08:02:38", artist_id: 1>, :controller=>"songs", :id=>nil} missing required keys: [:id]):
+    2: 
+    3: <h3> by <%= display_artist(@song) %></h3>
+    4: 
+    5: <%= link_to 'Edit Song', edit_artist_song_path(@song) %>
+    6: 
+    7: <%= link_to "All Songs", songs_path %>
+  app/views/songs/show.html.erb:5:in `_app_views_songs_show_html_erb__4230065141743223510_70101557294220'
+
+
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.9ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (6.7ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (37.4ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (33.4ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (61.3ms)
+
+
+Started GET "/songs/1/edit" for 127.0.0.1 at 2017-10-24 00:40:11 -0500
+Processing by SongsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mSong Load (13.7ms)[0m  SELECT  "songs".* FROM "songs" WHERE "songs"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mArtist Load (8.3ms)[0m  [1mSELECT  "artists".* FROM "artists" WHERE "artists"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered songs/_form.html.erb (341.1ms)
+  Rendered songs/edit.html.erb within layouts/application (463.7ms)
+Completed 200 OK in 1540ms (Views: 1334.9ms | ActiveRecord: 96.1ms)
+
+
+Started GET "/songs/1/edit" for 127.0.0.1 at 2017-10-24 00:40:18 -0500
+Processing by SongsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mSong Load (9.9ms)[0m  SELECT  "songs".* FROM "songs" WHERE "songs"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mArtist Load (3.0ms)[0m  [1mSELECT  "artists".* FROM "artists" WHERE "artists"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered songs/_form.html.erb (5.1ms)
+  Rendered songs/edit.html.erb within layouts/application (135.8ms)
+Completed 200 OK in 595ms (Views: 580.8ms | ActiveRecord: 12.9ms)
+
+
+Started GET "/songs" for 127.0.0.1 at 2017-10-24 00:40:27 -0500
+Processing by SongsController#index as HTML
+  [1m[35mSong Load (14.0ms)[0m  SELECT "songs".* FROM "songs"
+  [1m[36mArtist Load (11.9ms)[0m  [1mSELECT  "artists".* FROM "artists" WHERE "artists"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "artists".* FROM "artists" WHERE "artists"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mArtist Load (15.0ms)[0m  [1mSELECT  "artists".* FROM "artists" WHERE "artists"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mArtist Load (17.3ms)[0m  SELECT  "artists".* FROM "artists" WHERE "artists"."id" = ? LIMIT 1  [["id", 3]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "artists".* FROM "artists" WHERE "artists"."id" = ? LIMIT 1[0m  [["id", 3]]
+  [1m[35mArtist Load (6.4ms)[0m  SELECT  "artists".* FROM "artists" WHERE "artists"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "artists".* FROM "artists" WHERE "artists"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "artists".* FROM "artists" WHERE "artists"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "artists".* FROM "artists" WHERE "artists"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "artists".* FROM "artists" WHERE "artists"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered songs/index.html.erb within layouts/application (84.9ms)
+Completed 200 OK in 480ms (Views: 414.9ms | ActiveRecord: 64.7ms)
+
+
+Started GET "/songs/9" for 127.0.0.1 at 2017-10-24 00:40:30 -0500
+Processing by SongsController#show as HTML
+  Parameters: {"id"=>"9"}
+  [1m[36mSong Load (11.8ms)[0m  [1mSELECT  "songs".* FROM "songs" WHERE "songs"."id" = ? LIMIT 1[0m  [["id", 9]]
+  [1m[35mArtist Load (16.8ms)[0m  SELECT  "artists".* FROM "artists" WHERE "artists"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered songs/show.html.erb within layouts/application (18.2ms)
+Completed 200 OK in 518ms (Views: 487.7ms | ActiveRecord: 28.7ms)
+
+
+Started GET "/songs/9/edit" for 127.0.0.1 at 2017-10-24 00:40:40 -0500
+Processing by SongsController#edit as HTML
+  Parameters: {"id"=>"9"}
+  [1m[36mSong Load (15.9ms)[0m  [1mSELECT  "songs".* FROM "songs" WHERE "songs"."id" = ? LIMIT 1[0m  [["id", 9]]
+  [1m[35mArtist Load (13.1ms)[0m  SELECT  "artists".* FROM "artists" WHERE "artists"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered songs/_form.html.erb (14.9ms)
+  Rendered songs/edit.html.erb within layouts/application (148.8ms)
+Completed 200 OK in 693ms (Views: 663.5ms | ActiveRecord: 29.0ms)
+
+
+Started GET "/songs/new" for 127.0.0.1 at 2017-10-24 00:41:34 -0500
+Processing by SongsController#new as HTML
+  [1m[36mArtist Load (16.8ms)[0m  [1mSELECT "artists".* FROM "artists"[0m
+  Rendered songs/_form.html.erb (19.7ms)
+  Rendered songs/new.html.erb within layouts/application (152.5ms)
+Completed 200 OK in 607ms (Views: 589.8ms | ActiveRecord: 16.8ms)
+
+
+Started GET "/songs/new" for 127.0.0.1 at 2017-10-24 00:42:34 -0500
+Processing by SongsController#new as HTML
+  [1m[35mArtist Load (14.1ms)[0m  SELECT "artists".* FROM "artists"
+  Rendered songs/_form.html.erb (16.8ms)
+  Rendered songs/new.html.erb within layouts/application (136.4ms)
+Completed 200 OK in 581ms (Views: 566.3ms | ActiveRecord: 14.1ms)
+
+
+Started POST "/songs" for 127.0.0.1 at 2017-10-24 00:43:26 -0500
+Processing by SongsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Hu6pVcCVzD/DDJ+CTpFiDGRIFPLNxfjy1L8zwu/8YMMqUbwEfLVMp6owdw4wkZb/7+mpaDpjRdD8spQVt6atEw==", "song"=>{"artist_id"=>"5", "title"=>"No artist song", "artist_name"=>""}, "commit"=>"Create Song"}
+  [1m[36mArtist Load (9.5ms)[0m  [1mSELECT  "artists".* FROM "artists" WHERE "artists"."name" = ? LIMIT 1[0m  [["name", ""]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (34.7ms)[0m  [1mINSERT INTO "songs" ("title", "artist_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "No artist song"], ["artist_id", 5], ["created_at", "2017-10-24 05:43:26.654061"], ["updated_at", "2017-10-24 05:43:26.654061"]]
+  [1m[35m (19.9ms)[0m  commit transaction
+Redirected to http://localhost:3000/songs/11
+Completed 302 Found in 68ms (ActiveRecord: 64.2ms)
+
+
+Started GET "/songs/11" for 127.0.0.1 at 2017-10-24 00:43:26 -0500
+Processing by SongsController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mSong Load (8.3ms)[0m  [1mSELECT  "songs".* FROM "songs" WHERE "songs"."id" = ? LIMIT 1[0m  [["id", 11]]
+  [1m[35mArtist Load (14.8ms)[0m  SELECT  "artists".* FROM "artists" WHERE "artists"."id" = ? LIMIT 1  [["id", 5]]
+  Rendered songs/show.html.erb within layouts/application (16.5ms)
+Completed 200 OK in 459ms (Views: 435.5ms | ActiveRecord: 23.2ms)
+
+
+Started GET "/songs/11/edir" for 127.0.0.1 at 2017-10-24 00:43:34 -0500
+
+ActionController::RoutingError (No route matches [GET] "/songs/11/edir"):
+  actionpack (4.2.5) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.2.1) lib/web_console/middleware.rb:39:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.5) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /home/zcdrake/.rvm/rubies/ruby-2.3.1/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /home/zcdrake/.rvm/rubies/ruby-2.3.1/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /home/zcdrake/.rvm/rubies/ruby-2.3.1/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.8ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.0ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/routes/_table.html.erb (29.5ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (69.8ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.2ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (22.7ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/zcdrake/.rvm/gems/ruby-2.3.1/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (45.6ms)
+
+
+Started GET "/songs/11/edit" for 127.0.0.1 at 2017-10-24 00:43:37 -0500
+Processing by SongsController#edit as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mSong Load (7.2ms)[0m  [1mSELECT  "songs".* FROM "songs" WHERE "songs"."id" = ? LIMIT 1[0m  [["id", 11]]
+  [1m[35mArtist Load (12.3ms)[0m  SELECT  "artists".* FROM "artists" WHERE "artists"."id" = ? LIMIT 1  [["id", 5]]
+  Rendered songs/_form.html.erb (15.6ms)
+  Rendered songs/edit.html.erb within layouts/application (140.0ms)
+Completed 200 OK in 582ms (Views: 562.1ms | ActiveRecord: 19.5ms)
+
+
+Started PATCH "/songs/11" for 127.0.0.1 at 2017-10-24 00:43:47 -0500
+Processing by SongsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+Z9YrYkNo/U9GtoDmp2buwiuGERVjjchlxujRii1S6XNIE38NS0jbVQmMo/knW9Igw+l3qIoigO/FgSRcO+GdQ==", "song"=>{"title"=>"No artist song", "artist_name"=>"New artist"}, "commit"=>"Update Song", "id"=>"11"}
+  [1m[36mSong Load (18.7ms)[0m  [1mSELECT  "songs".* FROM "songs" WHERE "songs"."id" = ? LIMIT 1[0m  [["id", 11]]
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mArtist Load (12.0ms)[0m  [1mSELECT  "artists".* FROM "artists" WHERE "artists"."name" = ? LIMIT 1[0m  [["name", "New artist"]]
+  [1m[35mSQL (34.5ms)[0m  INSERT INTO "artists" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "New artist"], ["created_at", "2017-10-24 05:43:47.668117"], ["updated_at", "2017-10-24 05:43:47.668117"]]
+  [1m[36mSQL (2.2ms)[0m  [1mUPDATE "songs" SET "artist_id" = ?, "updated_at" = ? WHERE "songs"."id" = ?[0m  [["artist_id", 6], ["updated_at", "2017-10-24 05:43:47.703968"], ["id", 11]]
+  [1m[35m (20.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+Redirected to http://localhost:3000/songs/11
+Completed 302 Found in 100ms (ActiveRecord: 87.9ms)
+
+
+Started GET "/songs/11" for 127.0.0.1 at 2017-10-24 00:43:47 -0500
+Processing by SongsController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mSong Load (9.2ms)[0m  [1mSELECT  "songs".* FROM "songs" WHERE "songs"."id" = ? LIMIT 1[0m  [["id", 11]]
+  [1m[35mArtist Load (10.2ms)[0m  SELECT  "artists".* FROM "artists" WHERE "artists"."id" = ? LIMIT 1  [["id", 6]]
+  Rendered songs/show.html.erb within layouts/application (11.8ms)
+Completed 200 OK in 455ms (Views: 434.3ms | ActiveRecord: 19.3ms)
